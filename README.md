@@ -1,2 +1,2 @@
-# SportVU-2
+# SportVU
 SSMV SportVU project code
