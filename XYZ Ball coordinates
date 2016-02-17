@@ -1,0 +1,74 @@
+import xml.etree.ElementTree as etree
+locationList = []
+ballLocationList = []
+ballX = {}
+ballY = {}
+ballZ = {}
+
+
+root = etree.parse('SOMEDATA.XML').getroot()
+'''rootchildren = root.getchildren()
+childattrib = root.getchildren()[0].getchildren()
+childattrib1 = childattrib[4].getchildren()
+childattrib2 = childattrib1[0].getchildren()
+childattrib3 = childattrib2[11].getchildren()
+location = childattrib3[0].get("locations")
+print (location)
+'''
+'''visiting_team = root.iter('visiting-team')
+visiting_teamID = visiting_team.get('team-code')
+print(visiting_teamID)
+'''
+'''for x in root.iter('team-code'):
+    ID1 = x.find('global-id')
+    vteamID = ID1
+    print(vteamID)
+ '''   
+ 
+ 
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+
+    ballID = location.find('-1,-1')
+    semicolon = location.find(';')
+    
+    ballSubstringX = location[6:semicolon]
+    #print(ballSubstringX)
+    firstComma = ballSubstringX.find(',')
+    ballXcoordinate = ballSubstringX[:firstComma]
+    ballXfloat = float(ballXcoordinate)
+
+    print(ballXcoordinate)
+    
+    ballSubstringY = ballSubstringX[firstComma+1:semicolon]
+    #print(ballSubstringY)
+    secondComma = ballSubstringY.find(',')
+    ballYcoordinate = ballSubstringY[:secondComma]
+    ballYfloat = float(ballYcoordinate)
+
+    print(ballYcoordinate)
+
+    ballSubstringZ = ballSubstringY[secondComma+1:semicolon]
+    #print(ballSubstringZ)
+    ballZcoordinate = ballSubstringZ[:semicolon]
+    ballZfloat = float(ballZcoordinate)
+
+    print(ballZcoordinate)
+
+    tempList.append(ballXfloat)
+    tempList.append(ballYfloat)
+    tempList.append(ballZfloat)
+
+
+
+    ballLocationList.append(tempList)
+
+    
+
+    
+
+print(ballLocationList)    
