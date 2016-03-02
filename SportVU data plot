@@ -1,0 +1,684 @@
+import xml.etree.ElementTree as etree
+import matplotlib.pyplot as plt
+locationList = []
+from matplotlib import animation
+
+ballLocationList = []
+
+player1LocationList = []
+player2LocationList = []
+player3LocationList = []
+player4LocationList = []
+player5LocationList = []
+player6LocationList = []
+player7LocationList = []
+player8LocationList = []
+player9LocationList = []
+player10LocationList = []
+
+ref1LocationList = []
+ref2LocationList = []
+ref3LocationList = []
+
+root = etree.parse('SportVU.xml').getroot()
+
+def find_nth(location, string, n):
+    start = location.find(string)
+    while start >= 0 and n > 1:
+        start = location.find(string, start+len(string))
+        n -= 1
+    return start
+
+#BALL COORDINATES
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+
+    ballID = location.find('-1,-1')
+    semicolon = location.find(';')
+    
+    ballSubstringX = location[6:semicolon]
+    ###print(ballSubstringX)
+    firstComma = ballSubstringX.find(',')
+    ballXcoordinate = ballSubstringX[:firstComma]
+    ballXfloat = float(ballXcoordinate)
+
+    ##print(ballXcoordinate)
+    
+    ballSubstringY = ballSubstringX[firstComma+1:semicolon]
+    ###print(ballSubstringY)
+    secondComma = ballSubstringY.find(',')
+    ballYcoordinate = ballSubstringY[:secondComma]
+    ballYfloat = float(ballYcoordinate)
+
+    #print(ballYcoordinate)
+
+    ballSubstringZ = ballSubstringY[secondComma+1:semicolon]
+    ##print(ballSubstringZ)
+    ballZcoordinate = ballSubstringZ[:semicolon]
+    ballZfloat = float(ballZcoordinate)
+
+    #print(ballZcoordinate)
+    
+    #print('')
+
+    tempList.append(ballXfloat)
+    tempList.append(ballYfloat)
+    tempList.append(ballZfloat)
+
+    ballLocationList.append(tempList)
+
+    
+
+    
+
+#print(ballLocationList)
+
+
+
+#PLAYER1 COORDINATES
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = location.find('1388')
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player1LocationList.append(tempList)
+
+#print(player1LocationList)
+
+
+#PLAYER2 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1388',2)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player2LocationList.append(tempList)
+
+#print(player2LocationList)
+
+#PLAYER3 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1388',3)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player3LocationList.append(tempList)
+
+#print(player3LocationList)
+
+#PLAYER4 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1388',4)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player4LocationList.append(tempList)
+
+#print(player4LocationList)
+
+#PLAYER5 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1388',5)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player5LocationList.append(tempList)
+
+#print(player5LocationList)
+
+#PLAYER6 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1415',1)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player6LocationList.append(tempList)
+
+#print(player6LocationList)
+
+
+#PLAYER7 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1415',2)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player7LocationList.append(tempList)
+
+#print(player7LocationList)
+
+#PLAYER8 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1415',3)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player8LocationList.append(tempList)
+
+#print(player8LocationList)
+
+
+#PLAYER9 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1415',4)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player9LocationList.append(tempList)
+
+#print(player9LocationList)
+
+#PLAYER10 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'1415',5)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 12:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    player10LocationList.append(tempList)
+
+#print(player10LocationList)
+
+
+#REF1 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'-2',1)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 5:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    ref1LocationList.append(tempList)
+
+#print(ref1LocationList)
+
+#REF2 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'-2',2)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 5:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:semicolon]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    ref2LocationList.append(tempList)
+
+#print(ref2LocationList)
+
+
+#REF3 COORDINATES
+
+for coordinate in root.iter("moment"):
+
+    tempList = []
+    
+    location = coordinate.get('locations')
+    locationList.append(location)
+    
+    playerID = find_nth(location,'-2',3)
+    semicolon = location.find(';')
+    teamID = location[semicolon+1:semicolon+5]
+    
+    
+    
+    playerFullSubstringfake = location[semicolon]
+    semicolon2 = playerFullSubstringfake.find(';')
+    playerSubstringX = location[playerID + 5:semicolon2 - 2]
+    ##print(playerSubstringX)
+    firstComma = playerSubstringX.find(',')
+    playerXcoordinate = playerSubstringX[:firstComma]
+    playerXfloat = float(playerXcoordinate)
+
+    #print(playerXcoordinate)
+    
+    playerSubstringY = playerSubstringX[firstComma+1:]
+    ##print(ballSubstringY)
+    secondComma = playerSubstringY.find(',')
+    playerYcoordinate = playerSubstringY[:secondComma]
+    playerYfloat = float(playerYcoordinate)
+
+    #print(playerYcoordinate)
+
+    
+    #print('')
+
+    tempList.append(playerXfloat)
+    tempList.append(playerYfloat)
+
+
+    ref3LocationList.append(tempList)
+
+#print(ref3LocationList)
+
+fig = plt.figure()
+ax = plt.axes(xlim = (0,100), ylim = (0,60))
+line, = ax.plot([],[], lw=2)
+
+def __init__():
+    init_state = []
+    
+def animate():
+    for x in range(0,len(ballLocationList)):
+        plt.plot([ballLocationList[x][0]],[ballLocationList[x][1]],'bo')
+        plt.plot([player1LocationList[x][0]],[player1LocationList[x][1]],'ro')
+        plt.plot([player2LocationList[x][0]],[player2LocationList[x][1]],'ro')
+        plt.plot([player3LocationList[x][0]],[player3LocationList[x][1]],'ro')
+        plt.plot([player4LocationList[x][0]],[player4LocationList[x][1]],'ro')
+        plt.plot([player5LocationList[x][0]],[player5LocationList[x][1]],'ro')
+        plt.plot([player6LocationList[x][0]],[player6LocationList[x][1]],'yo')
+        plt.plot([player7LocationList[x][0]],[player7LocationList[x][1]],'yo')
+        plt.plot([player8LocationList[x][0]],[player8LocationList[x][1]],'yo')
+        plt.plot([player9LocationList[x][0]],[player9LocationList[x][1]],'yo')
+        plt.plot([player10LocationList[x][0]],[player10LocationList[x][1]],'yo')
+        plt.plot([ref1LocationList[x][0]],[ref1LocationList[x][1]],'go')
+        plt.plot([ref2LocationList[x][0]],[ref2LocationList[x][1]],'go')
+        plt.plot([ref3LocationList[x][0]],[ref3LocationList[x][1]],'go')
+       
+
+animate()
+
