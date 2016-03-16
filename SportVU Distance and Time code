@@ -1,0 +1,620 @@
+import xml.etree.ElementTree as etree
+import matplotlib.pyplot as plt
+locationList = []
+from matplotlib import animation
+import math
+
+debug = []
+locations = []
+clock = []
+
+root = etree.parse('SportVU.xml').getroot()
+
+
+#finds the nth location of a desired string
+
+
+#counts the number of errors in code
+for coordinate in root.iter('moment'):
+    location = coordinate.get('locations')
+    lsplit = location.split(';')
+    locations.append(lsplit)
+    
+    
+for time in root.iter('moment'):
+    game_clock = time.get('game-clock')
+    clock.append(game_clock)
+    
+for a, b in zip(locations, clock):
+    time_point = a, b
+    debug.append(time_point)
+    
+#print(clock)
+
+
+    
+    
+
+#for time in root.iter('moment'):
+ #   game_clock = time.get('game-clock')
+
+
+
+#BALL COORDINATES
+ball = []
+ballList = []
+ballCord = []
+ballCordTime = []
+for x in debug:
+    ball.append(x[0][0])
+
+for y in ball:
+    split = y.split(',')
+    ballList.append(split) 
+    
+for a in ballList:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    ballCord.append((a[2], a[3]))
+    
+for a, b in zip(ballCord, clock):
+    location_time = a, b
+    ballCordTime.append(location_time)
+        
+#print(ballList)
+
+
+
+#PLAYER 1 COORDINATES 
+P1 = []
+P1List = []
+P1Cord = []
+P1CordTime =[]
+for x in debug:
+    P1.append(x[0][1])
+    
+for y in P1:
+    split = y.split(',')
+    P1List.append(split)
+    
+for a in P1List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P1Cord.append((a[2], a[3]))
+    
+for a, b in zip(P1Cord, clock):
+    location_time = a, b
+    P1CordTime.append(location_time)
+    
+#print(P1CordTime)    
+    
+#PLAYER 2 COORDINATES
+
+P2 = []
+P2List = []
+P2Cord = []
+P2CordTime = []
+for x in debug:
+    P2.append(x[0][2])
+    
+for y in P2:
+    split = y.split(',')
+    P2List.append(split)
+    
+for a in P2List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P2Cord.append((a[2], a[3]))
+
+for a, b in zip(P2Cord, clock):
+    location_time = a, b
+    P2CordTime.append(location_time)
+    
+    
+#print(P2Cord)
+  
+#PLAYER 3 COORDINATES
+
+P3 = []
+P3List = []
+P3Cord = []
+P3CordTime = []
+for x in debug:
+    P3.append(x[0][3])
+    
+for y in P3:
+    split = y.split(',')
+    P3List.append(split)
+    
+for a in P3List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P3Cord.append((a[2], a[3]))
+    
+for a, b in zip(P3Cord, clock):
+    location_time = a, b
+    P3CordTime.append(location_time)
+    
+#print(P3Cord)
+
+#PLAYER 4 COORDINATES
+
+P4 = []
+P4List = []
+P4Cord = []
+P4CordTime = []
+for x in debug:
+    P4.append(x[0][4])
+    
+for y in P4:
+    split = y.split(',')
+    P4List.append(split)
+    
+for a in P4List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P4Cord.append((a[2], a[3]))
+    
+for a, b in zip(P4Cord, clock):
+    location_time = a, b
+    P4CordTime.append(location_time)
+    
+#print(P4Cord)
+
+#PLAYER 5 COORDINATES
+
+P5 = []
+P5List = []
+P5Cord = []
+P5CordTime = []
+for x in debug:
+    P5.append(x[0][5])
+    
+for y in P5:
+    split = y.split(',')
+    P5List.append(split)
+    
+for a in P5List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P5Cord.append((a[2], a[3]))
+    
+for a, b in zip(P5Cord, clock):
+    location_time = a, b
+    P5CordTime.append(location_time)
+    
+    
+#print(P5Cord)
+
+#PLAYER 6 COORDINATES
+
+P6 = []
+P6List = []
+P6Cord = []
+P6CordTime = []
+for x in debug:
+    P6.append(x[0][6])
+    
+for y in P6:
+    split = y.split(',')
+    P6List.append(split)
+    
+for a in P6List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P6Cord.append((a[2], a[3]))
+    
+for a, b in zip(P6Cord, clock):
+    location_time = a, b
+    P6CordTime.append(location_time)
+    
+#print(P6Cord)
+
+#PLAYER 7 COORDINATES
+
+P7 = []
+P7List = []
+P7Cord = []
+P7CordTime = []
+for x in debug:
+    P7.append(x[0][7])
+    
+for y in P7:
+    split = y.split(',')
+    P7List.append(split)
+    
+for a in P7List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P7Cord.append((a[2], a[3]))
+    
+for a, b in zip(P7Cord, clock):
+    location_time = a, b
+    P7CordTime.append(location_time)
+    
+#print(P7Cord)
+
+#PLAYER 8 COORDINATES
+
+P8 = []
+P8List = []
+P8Cord = []
+P8CordTime = []
+for x in debug:
+    P8.append(x[0][8])
+    
+for y in P8:
+    split = y.split(',')
+    P8List.append(split)
+    
+for a in P8List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P8Cord.append((a[2], a[3]))
+    
+for a, b in zip(P8Cord, clock):
+    location_time = a, b
+    P8CordTime.append(location_time)
+    
+#print(P8Cord)
+
+#PLAYER 9 COORDINATES
+
+P9 = []
+P9List = []
+P9Cord = []
+P9CordTime = []
+for x in debug:
+    P9.append(x[0][9])
+    
+for y in P9:
+    split = y.split(',')
+    P9List.append(split)
+    
+for a in P9List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P9Cord.append((a[2], a[3]))
+    
+for a, b in zip(P9Cord, clock):
+    location_time = a, b
+    P9CordTime.append(location_time)
+    
+#print(P9Cord)
+
+#PLAYER 10 COORDINATES            
+
+P10 = []
+P10List = []
+P10Cord = []
+P10CordTime = []
+for x in debug:
+    P10.append(x[0][10])
+    
+for y in P10:
+    split = y.split(',')
+    P10List.append(split)
+    
+for a in P10List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    P10Cord.append((a[2], a[3]))
+    
+for a, b in zip(P10Cord, clock):
+    location_time = a, b
+    P10CordTime.append(location_time)
+    
+#print(P10Cord)
+'''
+#REF 1 COORDINATES
+
+R1 = []
+R1List = []
+R1Cord = []
+for x in debug:
+    R1.append(x[1])
+    
+for y in R1:
+    split = y.split(',')
+    R1List.append(split)
+    
+for a in R1List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    R1Cord.append((a[2], a[3]))
+    R1Cord.append(a[3])
+    
+#print(R1Cord)
+
+#REF 2 COORDINATES
+
+R2 = []
+R2List = []
+R2Cord = []
+for x in debug:
+    R2.append(x[1])
+    
+for y in R2:
+    split = y.split(',')
+    R2List.append(split)
+    
+for a in P1List:
+    a[2] = float(a[2])
+    a[3] = float(a[3])
+    R2Cord.append((a[2], a[3]))
+    
+#print(R2Cord)
+
+#REF 3 COORDINATES
+
+R3, R3List, R3Cord = [], [], []
+for x in debug:
+    R3.append(x[1])
+    
+for y in R3:
+    split = y.split(',')
+    R3List.append(split)
+    
+for a in P1List:
+    a[2], a[3] = float(a[2]), float(a[3])
+    R3Cord.append((a[2], a[3]))
+    
+#print(R3Cord)
+'''
+for x in range (0, len(ballCord) - 1):
+    X1 = ballCord[x][0]
+    Y1 = ballCord[x][1]
+    X2 = ballCord[x+1][0]
+    Y2 = ballCord[x+1][1]
+    BallDistance = BallDistance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Ball Distance: " + str(BallDistance))
+
+#Calculates the distance traveled by Player1
+
+for x in range (0, len(P1Cord) - 1):
+    X1 = P1Cord[x][0]
+    Y1 = P1Cord[x][1]
+    X2 = P1Cord[x+1][0]
+    Y2 = P1Cord[x+1][1]
+    Player1Distance = Player1Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 1 Distance: " + str(Player1Distance))
+
+#Calculates the distance traveled by Player2
+
+for x in range (0, len(P2Cord) - 1):
+    X1 = P2Cord[x][0]
+    Y1 = P2Cord[x][1]
+    X2 = P2Cord[x+1][0]
+    Y2 = P2Cord[x+1][1]
+    Player2Distance = Player2Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 2 Distance: " + str(Player2Distance))
+
+#Calculates the distance traveled by Player3
+
+for x in range (0, len(P3Cord) - 1):
+    X1 = P3Cord[x][0]
+    Y1 = P3Cord[x][1]
+    X2 = P3Cord[x+1][0]
+    Y2 = P3Cord[x+1][1]
+    Player3Distance = Player3Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 3 Distance: " + str(Player3Distance))
+
+#Calculates the distance traveled by Player4
+
+for x in range (0, len(P4Cord) - 1):
+    X1 = P4Cord[x][0]
+    Y1 = P4Cord[x][1]
+    X2 = P4Cord[x+1][0]
+    Y2 = P4Cord[x+1][1]
+    Player4Distance = Player4Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 4 Distance: " + str(Player4Distance))
+
+
+#Calculates the distance traveled by Player5
+
+for x in range (0, len(P5Cord) - 1):
+    X1 = P5Cord[x][0]
+    Y1 = P5Cord[x][1]
+    X2 = P5Cord[x+1][0]
+    Y2 = P5Cord[x+1][1]
+    Player5Distance = Player5Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 5 Distance: " + str(Player5Distance))
+
+
+#Calculates the distance traveled by Player6
+
+for x in range (0, len(P6Cord) - 1):
+    X1 = P6Cord[x][0]
+    Y1 = P6Cord[x][1]
+    X2 = P6Cord[x+1][0]
+    Y2 = P6Cord[x+1][1]
+    Player6Distance = Player6Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 6 Distance: " + str(Player6Distance))
+
+
+#Calculates the distance traveled by Player7
+
+for x in range (0, len(P7Cord) - 1):
+    X1 = P7Cord[x][0]
+    Y1 = P7Cord[x][1]
+    X2 = P7Cord[x+1][0]
+    Y2 = P7Cord[x+1][1]
+    Player7Distance = Player7Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 7 Distance: " + str(Player7Distance))
+
+
+#Calculates the distance traveled by Player8
+
+for x in range (0, len(P8Cord) - 1):
+    X1 = P8Cord[x][0]
+    Y1 = P8Cord[x][1]
+    X2 = P8Cord[x+1][0]
+    Y2 = P8Cord[x+1][1]
+    Player8Distance = Player8Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 8 Distance: " + str(Player8Distance))
+
+
+#Calculates the distance traveled by Player9
+
+for x in range (0, len(P9Cord) - 1):
+    X1 = P9Cord[x][0]
+    Y1 = P9Cord[x][1]
+    X2 = P9Cord[x+1][0]
+    Y2 = P9Cord[x+1][1]
+    Player9Distance = Player9Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 9 Distance: " + str(Player9Distance))
+
+
+#Calculates the distance traveled by Player10
+
+for x in range (0, len(P10Cord) - 1):
+    X1 = P10Cord[x][0]
+    Y1 = P10Cord[x][1]
+    X2 = P10Cord[x+1][0]
+    Y2 = P10Cord[x+1][1]
+    Player10Distance = Player10Distance + ( math.hypot(X2 - X1, Y2 - Y1))
+print("Player 10 Distance: " + str(Player10Distance))
+
+print("Team 1 Total Distance: " + str(Player1Distance + Player2Distance + Player3Distance + Player4Distance + Player5Distance))
+print("Team 2 Total Distance: " + str(Player6Distance + Player7Distance + Player8Distance + Player9Distance + Player10Distance))
+  
+    
+
+fig = plt.figure()
+
+ax = plt.axes(xlim = (0,94), ylim = (0,50)) #defines limits for graph of players, ball, and refs 
+
+plt.plot([47,47], [0,50])
+Goal1 = plt.Circle((4,25), 0.75, color = 'm')
+Goal2 = plt.Circle((90,25), 0.75, color = 'm')
+Circle1 = plt.Circle((19,25), 6)
+Circle2 = plt.Circle((75,25), 6)
+goalPost1 = plt.plot([3,3], [19,31], color = 'b')
+goalPost2 = plt.plot([91,91],[19,31], color = 'b')
+#fig.gca().add_artist(Circle1)
+#fig.gca().add_artist(Circle2)
+fig.gca().add_artist(Goal1)
+fig.gca().add_artist(Goal2)
+#specifies color and marker asscociated with each individual 
+
+line, = plt.plot([],[], color = 'r', marker = 'o', markersize = 8)
+line2,= plt.plot([],[], color = 'b', marker = 'o', markersize = 10)
+line3, = plt.plot([],[], color = 'b', marker = 'o', markersize = 10)
+line4, = plt.plot([],[], color = 'b', marker = 'o', markersize = 10)
+line5, = plt.plot([],[], color = 'b', marker = 'o', markersize = 10)
+line6, = plt.plot([],[], color = 'b', marker = 'o', markersize = 10)
+line7, = plt.plot([],[], color = 'g', marker = 'o', markersize = 10)
+line8, = plt.plot([],[], color = 'g', marker = 'o', markersize = 10)
+line9, = plt.plot([],[], color = 'g', marker = 'o', markersize = 10)
+line10, = plt.plot([],[], color = 'g', marker = 'o', markersize = 10)
+line11, = plt.plot([],[], color = 'g', marker = 'o', markersize = 10)
+line12, = plt.plot([],[], color = 'y', marker = 'o', markersize = 5)
+line13, = plt.plot([],[], color = 'y', marker = 'o', markersize = 5)
+line14, = plt.plot([],[], color = 'y', marker = 'o', markersize = 5)
+
+#renames player, ball, and ref location lists into shorter variables 
+Lball = ballCord
+Lp1 = P1Cord
+Lp2 = P2Cord
+Lp3 = P3Cord
+Lp4 = P4Cord
+Lp5 = P5Cord
+Lp6 = P6Cord
+Lp7 = P7Cord
+Lp8 = P8Cord
+Lp9 = P9Cord
+Lp10 = P10Cord
+Lr1 = R1Cord
+Lr2= R2Cord
+Lr3 = R3Cord
+
+    
+#for each player (a-n) x (x1) and y (y1) locations are paired with each person. At the end the x and y coordinates are yeilded. The zip() function creates a tupple out of, in this case, 14 seperate lists.
+#For example the input could look something like a = [1, 2, 3] and b = [4, 5, 6]. The zip() function would combine them to look like [(1,4), (2, 5), (3, 6)]
+'''
+def team_data():
+    for b, c, d, e, f in zip(Lp1, Lp2, Lp3, Lp4, Lp5):
+      x2= b[0]
+      y2= b[1]
+      x3= c[0]  
+      y3= c[1]
+      x4= d[0]
+      y4= d[1]
+      x5= e[0]
+      y5= e[1]
+      x6= f[0]
+      y6= f[1]
+      yield x2, y2, x3, y3, x4, y4, x5, y5, x6, y6
+
+def team2_data():
+    for b, c, d, e, f in zip(Lp6, Lp7, Lp8, Lp9, Lp10):
+      x2= b[0]
+      y2= b[1]
+      x3= c[0]  
+      y3= c[1]
+      x4= d[0]
+      y4= d[1]
+      x5= e[0]
+      y5= e[1]
+      x6= f[0]
+      y6= f[1]
+      yield x2, y2, x3, y3, x4, y4, x5, y5, x6, y6
+'''
+
+def point_data():
+   for a, b, c, d, e, f, g, h, i, j, k in zip(Lball, Lp1, Lp2, Lp3, Lp4, Lp5, Lp6, Lp7, Lp8, Lp9, Lp10):
+      x1= a[0]
+      y1= a[1]
+      x2= b[0]
+      y2= b[1]
+      x3= c[0]
+      y3= c[1]
+      x4= d[0]
+      y4= d[1]
+      x5= e[0]
+      y5= e[1]
+      x6= f[0]
+      y6= f[1]
+      x7= g[0]
+      y7= g[1]
+      x8= h[0]
+      y8= h[1]
+      x9= i[0]
+      y9= i[1]
+      x10= j[0]
+      y10= j[1]
+      x11= k[0]
+      y11= k[1] 
+      yield x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x7, y7, x8, y8, x9, y9, x10, y10, x11, y11
+        
+#A function that first assigns the variables x1, y1, etc. to seperate     
+
+def animate(point_data):
+    x1, y1 = point_data[0], point_data[1]
+    x2, y2, x3, y3 = point_data[2], point_data[3], point_data[4], point_data[5]
+    x4, y4, x5, y5 = point_data[6], point_data[7], point_data[8], point_data[9]
+    x6, y6, x7, y7 = point_data[10], point_data[11], point_data[12], point_data[13]
+    x8, y8, x9, y9 = point_data[14], point_data[15], point_data[16], point_data[17]
+    x10, y10, x11, y11 = point_data[18], point_data[19], point_data[20], point_data[21]
+    
+    
+
+
+    line.set_data(x1, y1)
+    line2.set_data(x2, y2)
+    line3.set_data(x3, y3) 
+    line4.set_data(x4, y4)
+    line5.set_data(x5, y5)
+    line6.set_data(x6, y6)
+    line7.set_data(x7, y7)
+    line8.set_data(x8, y8) 
+    line9.set_data(x9, y9)
+    line10.set_data(x10, y10)
+    line11.set_data(x11, y11)
+   
+
+#animates the player, ball, and ref locations in the XML file. The interval depicts the amount of time before a new location is displayed. For example if interval = 500 the markers would move more slowly around the 
+#graph 
+
+anim = animation.FuncAnimation(fig, animate, point_data, interval = 40, repeat = True)
+plt.show()
